@@ -108,7 +108,7 @@ function Particle(x, y, radius, color) {
 	this.radius = radius;
 	this.color = color;
 	this.mass = 1;
-	this.opacity  = 0.2;
+	this.opacity  = 0;
 
 	this.update = particles => {
 		this.draw();
@@ -129,8 +129,12 @@ function Particle(x, y, radius, color) {
 		}
 
 		// mouse collision detection
-		if (distance(mouse.x, mouse.y, this.x, this.y) < 30 ) {
+		if (distance(mouse.x, mouse.y, this.x, this.y) < 80 && this.opacity < 0.2) {
 			this.opacity += 0.02;
+			
+		} else if (this.opacity > 0) {
+			this.opacity -= 0.02;
+			this.opacity = Math.max(0, this.opacity);	
 		}
 
 		this.x += this.velocity.x;
