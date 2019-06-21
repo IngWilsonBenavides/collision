@@ -102,8 +102,8 @@ function Particle(x, y, radius, color) {
 	this.x = x;
 	this.y = y;
 	this.velocity = {
-		x: Math.random() - 0.5,
-		y: Math.random() - 0.5,
+		x: (Math.random() - 0.5) * 5,
+		y: (Math.random() - 0.5) * 5,
 	}
 	this.radius = radius;
 	this.color = color;
@@ -146,8 +146,8 @@ let particles;
 function init() {
 	particles = [];
 
-	for (let i = 0; i < 4; i++) {
-		const radius = 80;
+	for (let i = 0; i < 100; i++) {
+		const radius = 15;
 		let x = randomIntFromRange(radius, canvas.width - radius);
 		let y = randomIntFromRange(radius, canvas.height - radius);		
 		const color = 'blue';
