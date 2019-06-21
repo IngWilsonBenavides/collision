@@ -8,8 +8,8 @@ canvas.height = innerHeight;
 
 // Variables
 var mouse = {
-	x: innerWidth / 2,
-	y: innerHeight / 2 
+	x: 10,
+	y: 10 
 };
 
 var colors = [
@@ -77,7 +77,7 @@ let circle1;
 let circle2;
 function init() {
 	circle1 = new Circle(300, 300, 100, 'black');
-	circle2 = new Circle(undefined, undefined, 30, 'red');
+	circle2 = new Circle(10, 10, 30, 'red');
 }
 
 // Animation Loop
@@ -91,7 +91,12 @@ function animate() {
 	circle2.y = mouse.y;
 	circle2.update();
 
-	console.log(getDistance(circle1.x, circle1.y, circle2.x, circle2.y));
+	if (getDistance(circle1.x, circle1.y, circle2.x, circle2.y) < circle1.radius + circle2.radius) {
+		circle1.color = 'red';
+	} else {
+		circle1.color = 'black';
+	}
+
 }
 
 init();
