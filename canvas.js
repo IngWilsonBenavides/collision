@@ -127,6 +127,11 @@ function Particle(x, y, radius, color) {
 			this.velocity.y = -this.velocity.y;
 		}
 
+		// mouse collision detection
+		if (distance(mouse.x, mouse.y, this.x, this.y) < 30 ) {
+			console.log('collided');
+		}
+
 		this.x += this.velocity.x;
 		this.y += this.velocity.y;
 	};
@@ -150,7 +155,7 @@ function init() {
 		const radius = 15;
 		let x = randomIntFromRange(radius, canvas.width - radius);
 		let y = randomIntFromRange(radius, canvas.height - radius);		
-		const color = 'blue';
+		const color = randomColor(colors);
 
 		if (i != 0) {
 			for (let j = 0; j < particles.length; j++) {
