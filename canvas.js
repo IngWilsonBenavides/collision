@@ -55,11 +55,25 @@ function distance(x1, y1, x2, y2) {
 function Particle(x, y, radius, color) {
 	this.x = x;
 	this.y = y;
+	this.velocity = {
+		x: Math.random() - 0.5,
+		y: Math.random() - 0.5,
+	}
 	this.radius = radius;
 	this.color = color;
 
-	this.update = () => {
+	this.update = particles => {
 		this.draw();
+
+		for (let i = 0; i < particles.length; i++) {
+			if (this === particles[i]) continue;
+			if (distance(this.x, this.y, particles[i].x, particles[i].y) - this.radius * 2 < 0) {
+				console.log('has collided')	;
+			}
+		}
+
+		this.x += this.velocity.x;
+		this.y += this.velocity.y;
 	};
 
 	this.draw = () => {
@@ -104,7 +118,7 @@ function animate() {
 	c.clearRect(0, 0, canvas.width, canvas.height);
 	
 	particles.forEach(particle => {
-	 	particle.update();
+	 	particle.update(particles);
 	});
 }
 
