@@ -68,8 +68,10 @@ function Circle(x, y, radius, color) {
 
 // Implementation
 let circle1;
+let circle2;
 function init() {
 	circle1 = new Circle(300, 300, 100, 'black');
+	circle2 = new Circle(undefined, undefined, 30, 'red');
 }
 
 // Animation Loop
@@ -79,6 +81,9 @@ function animate() {
 	c.clearRect(0, 0, canvas.width, canvas.height);
 	
 	circle1.update();
+	circle2.x = mouse.x;
+	circle2.y = mouse.y;
+	circle2.update();
 }
 
 init();
