@@ -107,6 +107,7 @@ function Particle(x, y, radius, color) {
 	}
 	this.radius = radius;
 	this.color = color;
+	this.mass = 1;
 
 	this.update = particles => {
 		this.draw();
@@ -146,7 +147,7 @@ function init() {
 	particles = [];
 
 	for (let i = 0; i < 4; i++) {
-		const radius = 60;
+		const radius = 80;
 		let x = randomIntFromRange(radius, canvas.width - radius);
 		let y = randomIntFromRange(radius, canvas.height - radius);		
 		const color = 'blue';
